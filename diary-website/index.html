@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿锜的秘密天地</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 首页 -->
+    <div id="homePage" class="page">
+        <h1 class="title">阿锜的秘密天地</h1>
+        <button class="enter-btn" onclick="showPasswordModal()">进入</button>
+    </div>
+
+    <!-- 密码输入模态框 -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>请输入密码：</p>
+            <input type="password" id="passwordInput">
+            <button onclick="checkPassword()">提交</button>
+        </div>
+    </div>
+
+    <!-- 日记页面 -->
+    <div id="diaryPage" class="page hidden">
+        <div class="header">
+            <button onclick="filterDiaries('all')">全部日记</button>
+            <button onclick="filterDiaries('happy')">开心日记</button>
+            <button onclick="filterDiaries('sad')">伤心日记</button>
+            <!-- 其他情绪分类 -->
+        </div>
+        <div id="diaryList" class="diary-list"></div>
+        <button class="add-btn" onclick="showDiaryForm()">+</button>
+    </div>
+
+    <!-- 添加日记表单 -->
+    <div id="diaryFormModal" class="modal">
+        <div class="modal-content diary-form">
+            <span class="close" onclick="closeDiaryForm()">&times;</span>
+            <div class="form-header">
+                <select id="dayOfWeek">
+                    <option value="Monday">星期一</option>
+                    <option value="Tuesday">星期二</option>
+                    <!-- 其他星期 -->
+                </select>
+                <input type="text" id="dateInput" placeholder="dd/mm/yyyy">
+            </div>
+            <textarea id="diaryContent" placeholder="写下你的日记..."></textarea>
+            <input type="file" id="imageUpload" accept="image/*">
+            <button onclick="saveDiary()">完成</button>
+        </div>
+    </div>
+
+    <!-- 情绪选择模态框 -->
+    <div id="emotionModal" class="modal">
+        <div class="modal-content emotion-form">
+            <p>选择你今天的情绪：</p>
+            <div class="emotion-options">
+                <button onclick="selectEmotion('happy')">😊 开心</button>
+                <button onclick="selectEmotion('sad')">😢 伤心</button>
+                <!-- 其他情绪 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 正能量窗口 -->
+    <div id="motivationModal" class="modal">
+        <div class="modal-content motivation-form">
+            <p>今天的激励句子：</p>
+            <p id="motivationText"></p>
+            <button onclick="closeMotivationModal()">关闭</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
